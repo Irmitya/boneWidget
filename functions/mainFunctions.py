@@ -1,10 +1,11 @@
 import bpy
 import numpy
 from .jsonFunctions import objectDataToDico
+from .. import __package__
 
 
 def get_collection(context):
-    bw_collection_name = context.preferences.addons["boneWidget"].preferences.bonewidget_collection_name
+    bw_collection_name = context.preferences.addons[__package__].preferences.bonewidget_collection_name
     collection = context.scene.collection.children.get(bw_collection_name)
     if collection:
         return collection
@@ -39,7 +40,7 @@ def fromWidgetFindBone(widget):
 def createWidget(bone, widget, relative, size, scale, slide, collection):
     C = bpy.context
     D = bpy.data
-    bw_widget_prefix = C.preferences.addons["boneWidget"].preferences.widget_prefix
+    bw_widget_prefix = C.preferences.addons[__package__].preferences.widget_prefix
 
     if bone.custom_shape_transform:
         matrixBone = bone.custom_shape_transform
@@ -83,7 +84,7 @@ def createWidget(bone, widget, relative, size, scale, slide, collection):
 def symmetrizeWidget(bone, collection):
     C = bpy.context
     D = bpy.data
-    bw_widget_prefix = C.preferences.addons["boneWidget"].preferences.widget_prefix
+    bw_widget_prefix = C.preferences.addons[__package__].preferences.widget_prefix
 
     widget = bone.custom_shape
 

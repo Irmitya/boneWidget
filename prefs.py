@@ -4,7 +4,7 @@ from bpy.props import StringProperty
 
 
 class BoneWidgetPreferences(AddonPreferences):
-    bl_idname = 'boneWidget'
+    bl_idname = __package__
 
     # widget prefix
     widget_prefix: StringProperty(
